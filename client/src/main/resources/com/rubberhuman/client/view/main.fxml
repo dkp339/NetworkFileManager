@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.rubberhuman.client.controller.MainController"
+            prefWidth="1000" prefHeight="700">
 
-</AnchorPane>
+    <top>
+        <VBox>
+            <ToolBar>
+                <Button fx:id="btnBack" text="⬅ 返回上一级" onAction="#onBackClick" disable="true"/>
+                <Separator/>
+
+                <Button text="⬆ 上传" onAction="#onUploadClick"/>
+                <Button text="➕ 新建文件夹" onAction="#onNewFolderClick"/>
+                <Separator/>
+                <Button text="⬇ 下载" onAction="#onDownloadClick"/>
+                <Button text="🗑 删除" onAction="#onDeleteClick"/>
+
+                <Button text="✎ 重命名" onAction="#onRenameClick"/>
+                <Button text="🔗 分享" onAction="#onShareClick"/>
+
+                <Separator/>
+                <Button text="🔄 刷新" onAction="#onRefreshClick"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <TextField fx:id="searchField" promptText="搜索文件..." prefWidth="150"/>
+                <Button text="🔍" onAction="#onSearchClick"/>
+
+                <Separator/>
+                <Label fx:id="currentUserLabel" text="未登录"/>
+                <Button text="退出" onAction="#onLogoutClick"/>
+            </ToolBar>
+
+            <HBox style="-fx-background-color: #e0e0e0; -fx-padding: 5;">
+                <Label fx:id="pathLabel" text="当前路径: /根目录"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.25, 0.75">
+            <VBox>
+                <Label text=" 目录结构" style="-fx-font-weight: bold; -fx-padding: 5;"/>
+                <TreeView fx:id="directoryTree" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <VBox>
+                <TableView fx:id="fileTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colType" text="类型" prefWidth="60"/>
+                        <TableColumn fx:id="colName" text="名称" prefWidth="250"/>
+                        <TableColumn fx:id="colSize" text="大小" prefWidth="100"/>
+                        <TableColumn fx:id="colTime" text="修改时间" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <VBox spacing="10">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="属性面板" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                <Separator/>
+                <GridPane vgap="10" hgap="10">
+                    <Label text="名称:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label text="-" fx:id="propName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="类型:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label text="-" fx:id="propType" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="大小:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label text="-" fx:id="propSize" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 5; -fx-background-color: #f0f0f0;">
+            <Label text="就绪"/>
+        </HBox>
+    </bottom>
+</BorderPane>

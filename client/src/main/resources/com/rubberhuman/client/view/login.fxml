@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rubberhuman.client.controller.LoginController"
+      prefWidth="400" prefHeight="300">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Text text="网络文件系统 - 用户登录" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="usernameField" promptText="用户名"/>
+    <PasswordField fx:id="passwordField" promptText="密码"/>
+
+    <Button text="登录" onAction="#onLoginButtonClick" maxWidth="Infinity" style="-fx-background-color: #007bff; -fx-text-fill: white;"/>
+
+    <Hyperlink text="没有账号？去注册" onAction="#onRegisterLinkClick"/>
+</VBox>

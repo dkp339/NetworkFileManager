@@ -1,7 +1,8 @@
-package com.rubberhuman.server.entity;
+package com.rubberhuman.server.entity.auth;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -21,6 +22,10 @@ public class SysUser {
     private String role;
 
     private String email;
+
+    @TableLogic
+    private Integer isDeleted;
+
 
     private LocalDateTime createTime;
 }
